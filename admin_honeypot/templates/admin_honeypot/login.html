@@ -1,5 +1,6 @@
 {% extends 'admin/login.html' %}
 
 {% block branding %}
+{% csrf_token %}
 <h1 id="site-name"><a href="{% url 'admin_honeypot:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
 {% endblock %}
