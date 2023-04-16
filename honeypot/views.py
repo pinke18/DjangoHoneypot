@@ -20,7 +20,7 @@ class RemoteAddrMiddleware(object):
                     ip_address = value.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
                     value.META['REMOTE_ADDR'] = ip_address
                 elif 'REMOTE_ADDR' in value.META:
-                    ip_address = value.META['REMOTE_ADDR']
+                    ip_address = value.META['REMOTE_ADDR'].split(':')[0].strip()
                 else:
                     ip_address, is_routable = get_client_ip(value)
                 response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
