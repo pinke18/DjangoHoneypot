@@ -9,12 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from django.contrib import staticfiles
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +26,6 @@ SECRET_KEY = "django-insecure-j)jrm$6n$5(q_w*b3wm&i9(u=!e&(=x@lzvd4h+v=r(tksalm6
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -80,8 +76,11 @@ WSGI_APPLICATION = "DjangoHoneypot.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "Honeypot",
+        'HOST': "bvihoneypot.postgres.database.azure.com",
+        'USER': "postgres",
+        'PASSWORD': "PGhoneypot123"
     }
 }
 
