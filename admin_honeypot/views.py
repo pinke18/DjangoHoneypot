@@ -20,7 +20,6 @@ class AdminHoneypot(generic.FormView):
     template_name = 'admin_honeypot/login.html'
     form_class = HoneypotLoginForm
 
-    @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         if not request.path.endswith('/'):
             return redirect(request.path + '/', permanent=True)
@@ -33,11 +32,9 @@ class AdminHoneypot(generic.FormView):
 
         return super(AdminHoneypot, self).dispatch(request, *args, **kwargs)
 
-    @csrf_exempt
     def get_form(self, form_class=form_class):
         return form_class(self.request, **self.get_form_kwargs())
 
-    @csrf_exempt
     def get_context_data(self, **kwargs):
         context = super(AdminHoneypot, self).get_context_data(**kwargs)
         context.update({
@@ -48,11 +45,9 @@ class AdminHoneypot(generic.FormView):
         })
         return context
 
-    @csrf_exempt
     def form_valid(self, form):
         return self.form_invalid(form)
 
-    @csrf_exempt
     def form_invalid(self, form):
         ip_address, is_routable = get_client_ip(self.request)
         instance = LoginAttempt.objects.create(
