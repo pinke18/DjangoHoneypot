@@ -17,7 +17,7 @@ class RemoteAddrMiddleware(object):
             if key == "request":
                 print("TUTUTU", value.META)
                 if 'HTTP_X_FORWARDED_FOR' in value.META:
-                    ip_address = value.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+                    ip_address = value.META['HTTP_X_FORWARDED_FOR'].split(':')[0].strip()
                     value.META['REMOTE_ADDR'] = ip_address
                 elif 'REMOTE_ADDR' in value.META:
                     ip_address = value.META['REMOTE_ADDR'].split(':')[0].strip()
