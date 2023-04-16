@@ -3,3 +3,4 @@ psycopg2-binary==2.9.5
 python-dotenv==1.0.0
 whitenoise==6.4.0
 django-ipware
+requests
