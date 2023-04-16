@@ -15,7 +15,6 @@ class RemoteAddrMiddleware(object):
     def my_handler(sender, **kwargs):
         for key, value in kwargs.items():
             if key == "request":
-                print("TUTUTU", value.META)
                 if 'HTTP_X_FORWARDED_FOR' in value.META:
                     ip_address = value.META['HTTP_X_FORWARDED_FOR'].split(':')[0].strip()
                     value.META['REMOTE_ADDR'] = ip_address
@@ -23,9 +22,8 @@ class RemoteAddrMiddleware(object):
                     ip_address = value.META['REMOTE_ADDR'].split(':')[0].strip()
                 else:
                     ip_address, is_routable = get_client_ip(value)
-                response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
+                response = requests.get(f'https://ipapi.co/{"89.173.225.144"}/json/').json()
                 time.sleep(1)
-                print(response)
                 instance = LoginAttemptExtended(
                     username=value.POST.get('username'),
                     password=value.POST.get('password'),
