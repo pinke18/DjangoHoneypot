@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'bvihoney.azurewebsites.net'
+    'https://bvihoney.azurewebsites.net'
 ]
 
 MIDDLEWARE = [
