@@ -25,6 +25,7 @@ class RemoteAddrMiddleware(object):
                     ip_address, is_routable = get_client_ip(value)
                 response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
                 time.sleep(1)
+                print(response)
                 instance = LoginAttemptExtended(
                     username=value.POST.get('username'),
                     password=value.POST.get('password'),
